@@ -6,175 +6,311 @@
     <title>Nathaniel Rijndorp - Security Researcher</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        /* General Styles */
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #2c3e50; /* Dark text */
-            background: url('cybersecurity-threats.jpeg') no-repeat center center fixed;
-            background-size: cover;
-        }
+    /* Define the new color variables for easy use */
+    :root {
+        --primary-accent: rgb(224, 141, 171); /* #E08DAB (Your desired color) */
+        --light-accent: rgb(238, 170, 194); /* A slightly lighter version for links */
+    }
+    
+    /* General Styles */
+    body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #2c3e50;
+        /* CORRECTED: Re-adding the original body background (knh.jpeg) with parallax */
+        background: url('knh2.webp') no-repeat center center fixed;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    /* Sections now use the green background and white text */
+    section {
+        max-width: 900px;
+        margin: 30px auto;
+        padding: 30px;
+        background-color: hsl(164, 57%, 22%); /* Green background for sections */
+        color: #ffffff; /* White text for readability on green background */
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        line-height: 1.6;
+    }
 
-        /* Container for content to ensure the background is readable */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(236, 240, 241, 0.95); /* Light, semi-transparent overlay */
-            z-index: -1; /* Place behind content */
-        }
+    /* Ensure links within sections are visible on the green background */
+    section a {
+        color: var(--light-accent); 
+        text-decoration: none;
+    }
 
-        /* Header */
-        header {
-            background-color: #2c3e50; /* Dark header background */
-            color: #ecf0f1; /* Light header text */
-            padding: 40px 20px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+    section a:hover {
+        color: #ffffff;
+        background-color: rgba(255, 255, 255, 0.1);
+    }
 
-        header h1 {
-            margin-bottom: 5px;
-            font-weight: 700;
-        }
+    /* Header (Option 2: Title in Green Box) */
+    header {
+        /* HEADER PARALLAX: Using test.jpg */
+        background-image: url('test.jpg');
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed; /* KEY: This creates the parallax effect in the header */
+        /* Adjusted header styles for readability over the image */
+        padding: 50px 20px; /* Increased padding to show more of the image */
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        color: #ecf0f1; /* White/light text */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Added shadow for text clarity */
+    }
 
-        /* Sections */
-        section {
-            max-width: 900px;
-            margin: 30px auto;
-            padding: 30px;
-            background-color: #fff;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Lifted effect */
-            line-height: 1.6;
-        }
+    header h1 {
+        margin-bottom: 5px;
+        font-size: 3em; /* Slightly larger title */
+        font-weight: 700;
+    }
 
-        h2 {
-            color: #007bff; /* Primary blue accent */
-            border-bottom: 2px solid #007bff;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
+    header p {
+        /* Title styled as a themed pill/banner - ensure high contrast */
+        background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background for pill */
+        color: #ffffff;
+        font-weight: 400;
+        font-size: 1.2em; /* Slightly larger job title */
+        padding: 5px 15px;
+        border-radius: 20px; /* Pill shape */
+        margin-top: 10px;
+        margin-bottom: 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        border: 1px solid #FFD700; /* Small gold border */
+        display: inline-block; /* Allows the pill shape to wrap content */
+        text-shadow: none; /* Remove shadow from the pill text */
+    }
 
-        /* Images (Certificates/Competitions) */
-        img {
-            display: block;
-            margin: 20px auto;
-            width: 100%; /* Use full section width */
-            max-width: 700px; /* But keep a max size */
-            height: auto;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.2s;
-        }
-        
-        img:hover {
-            transform: scale(1.01); /* Subtle hover effect */
-        }
+    /* Headings & Icon */
+    .heading-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        /* UPDATED: Heading bottom border color */
+        border-bottom: 2px solid var(--primary-accent); 
+        padding-bottom: 10px;
+    }
+    
+    /* FIX: Ensure all h2 headings in sections use the accent color */
+    section h2 { 
+        color: var(--primary-accent);
+        margin: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+        font-weight: 700;
+    }
 
-        /* Social Links & Activity Links */
-        .link-group {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 30px;
-            padding-top: 15px;
-            border-top: 1px solid #f0f0f0;
-        }
+    .heading-container h2 {
+        color: var(--primary-accent); 
+        margin: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+        font-weight: 700;
+    }
 
-        .social-links {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid */
-            gap: 20px;
-        }
+    /* Profile picture on left with text wrapping */
+    .about-content {
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+        min-width: 0;
+    }
 
-        .activity-links a {
-            font-weight: 500;
-            display: block;
-        }
+    .profile-pfp {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        /* UPDATED: Profile picture border color */
+        border: 3px solid var(--primary-accent); 
+        /* UPDATED: Profile picture box-shadow color */
+        box-shadow: 0 0 8px rgba(224, 141, 171, 0.7); 
+        flex-shrink: 0;
+    }
 
-        .social-links a, .activity-links a {
-            text-decoration: none;
-            color: #007bff;
-            font-weight: 500;
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10px;
-            border: 1px solid #007bff;
-            border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
-        }
+    .about-text {
+        flex-grow: 1;
+        min-width: 0;
+    }
 
-        .social-links a:hover {
-            background-color: #007bff;
-            color: #fff;
-        }
-        
-        .activity-links a {
-            justify-content: flex-start;
-            border-color: #ccc;
-            color: #333;
-        }
-        
-        .activity-links a:hover {
-            background-color: #f1f1f1;
-            color: #007bff;
-            border-color: #007bff;
-        }
+    /* Images (Certificates/Competitions) */
+    img {
+        display: block;
+        margin: 20px auto;
+        width: 100%;
+        max-width: 700px;
+        height: auto;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s;
+    }
 
-        .social-links img {
-            width: 20px;
-            height: 20px;
-            margin: 0 8px 0 0; /* Adjust margin for inline alignment */
-            border: none;
-            box-shadow: none;
+    img:hover {
+        transform: scale(1.01);
+    }
+    
+    /* --- NEW LINK SECTION STYLES --- */
+
+    .link-group-container {
+        display: flex;
+        flex-direction: column; /* Stacked on mobile */
+        gap: 30px;
+        margin-top: 30px;
+        padding-top: 15px;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    @media (min-width: 768px) {
+        .link-group-container {
+            flex-direction: row; /* Side-by-side on desktop */
+            justify-content: space-between;
         }
-        
-        .social-links a:hover img {
-            filter: brightness(0) invert(1); /* Change icon color on hover to white */
+    }
+
+    .link-group {
+        flex: 1 1 45%; /* Allows sections to grow but wrap nicely */
+    }
+
+    .link-group h3 {
+        color: var(--light-accent);
+        margin-top: 0;
+        margin-bottom: 15px;
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+        padding-bottom: 5px;
+    }
+
+    .links-grid {
+        display: grid;
+        grid-template-columns: 1fr; /* Default to single column for all links */
+        gap: 15px;
+    }
+
+    @media (min-width: 500px) {
+        .social-links .links-grid {
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Two-column grid for social links */
         }
-    </style>
+    }
+
+    /* Base style for all links */
+    .link-item {
+        font-weight: 500;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        padding: 12px;
+        border: 2px solid var(--light-accent);
+        border-radius: 8px;
+        transition: all 0.3s ease-in-out;
+        color: var(--light-accent);
+        text-decoration: none;
+    }
+
+    .link-item.social {
+        justify-content: center;
+    }
+    
+    .link-item.activity {
+        justify-content: flex-start;
+    }
+    
+    .link-item:hover {
+        background-color: var(--light-accent); 
+        color: hsl(164, 57%, 22%); /* Dark green text on hover for contrast */
+        border-color: var(--light-accent);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Icon styling (SVGs) */
+    .link-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        fill: currentColor; /* Inherits the link's text color */
+        transition: fill 0.3s;
+    }
+
+    .link-item:hover .link-icon {
+        fill: hsl(164, 57%, 22%); /* Icon color matches the dark green background on hover */
+    }
+
+    /* Specific icon adjustments for logos/images (if you kept them) */
+    .link-item img {
+        width: 20px;
+        height: 20px;
+        margin: 0 10px 0 0;
+        /* Reset default img styles that break link appearance */
+        display: block; 
+        box-shadow: none;
+        border: none;
+    }
+
+</style>
 </head>
 <body>
     <header>
         <h1>Nathaniel Rijndorp</h1>
-        <p>Aspiring Security Researcher | L3ak CTF Team💧</p>
+        <p>Aspiring Security Analyst | L3ak CTF Team 💧</p>
     </header>
     
     <section id="about">
-        <h2>About Me</h2>
+        <div class="heading-container">
+            <h2>About Me</h2>
+        </div>
         
-        <p>I am a passionate cybersecurity enthusiast with a strong focus on Digital Forensics and Incident Response. My journey began with Lil L3ak, which quickly led to me playing for the main L3ak CTF team. I leverage competitive challenges to sharpen my skills and stay ahead of emerging threats.</p>
+        <div class="about-content">
+            <img src="maomao_pfp.jpg" alt="Profile Picture" class="profile-pfp"> 
+            <div class="about-text">
+                <p>I am a passionate cybersecurity enthusiast with a strong focus on Digital Forensics and Incident Response. My journey began with Lil L3ak, which quickly led to me playing for the main L3ak CTF team. I leverage competitive challenges to sharpen my skills and stay ahead of emerging threats.</p>
 
-        <p>I aim to become a SOC Analyst in the near future, focusing my studies on Threat Hunting, Digital Forensics, and Malware Analysis. My hobbies include participating in Capture The Flag (CTF) competitions, cooking, and listening to music.</p>
-        
-        <p>I'm particularly passionate about CTF competitions, especially digital forensics challenges and Threat Hunting. My competitive performance demonstrates my practical skills: in the recent HTB Sherlock CTF, I achieved a ranking within the Top 27 globally. Furthermore, I currently rank among the Top 10 on the CyberDefenders Philippines leaderboard. I’ve solved 63 out of 114 Sherlock CTFs and completed 755 total tasks on Hack The Box, with 55% Sherlock challenge ownership. I believe that honing my skills through these platforms will make me a valuable asset in a Security Operations Center.</p>
-        
-        <div class="link-group">
-            <h3>Connect & Follow My Activity:</h3>
-            
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/nathaniel-pascua-rijndorp/" target="_blank">
-                    <img src="https://static.vecteezy.com/system/resources/previews/023/986/926/non_2x/linkedin-logo-linkedin-logo-transparent-linkedin-icon-transparent-free-free-png.png" alt="LinkedIn"> LinkedIn
-                </a>
-                <a href="https://medium.com/@nathanielpascuarijndorp" target="_blank">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3670/3670098.png" alt="Medium"> Medium
-                </a>
-            </div>
-            
-            <div class="activity-links">
-                <a href="https://app.hackthebox.com/users/2140509" target="_blank">Hack The Box Profile</a>
-                <a href="https://cyberdefenders.org/p/maomaofan#/challenges" target="_blank">Cyber Defenders Profile</a>
+                <p>I aim to become a SOC Analyst in the near future, focusing my studies on Threat Hunting, Digital Forensics, and Malware Analysis. My hobbies include participating in Capture The Flag (CTF) competitions, cooking, and listening to music.</p>
+                
+                <p>I'm particularly passionate about CTF competitions, especially Digital Forensics challenges and Threat Hunting. My competitive performance demonstrates my practical skills: in the recent HTB Sherlock CTF, I achieved a ranking within the Top 27 globally. Furthermore, I currently rank among the Top 10 on the CyberDefenders Philippines leaderboard. I’ve solved 63 out of 114 Sherlock CTFs and completed 755 total tasks on Hack The Box, with 55% Sherlock challenge ownership. I believe that honing my skills through these platforms will make me a valuable asset in a Security Operations Center.</p>
             </div>
         </div>
+        
+        <!-- START OF REDESIGNED LINK SECTION -->
+        <div class="link-group-container">
+            
+            <div class="link-group social-links">
+                <h3>Social & Blog:</h3>
+                <div class="links-grid">
+                    <!-- Link 1: LinkedIn (Using Image: linkedin.png) -->
+                    <a href="https://www.linkedin.com/in/nathaniel-pascua-rijndorp/" target="_blank" class="link-item social">
+                        <img src="linkedin_icon.png" alt="LinkedIn Logo" class="link-icon">
+                        LinkedIn
+                    </a>
+                    <!-- Link 2: Medium (Using Image: medium.png) -->
+                    <a href="https://medium.com/@nathanielpascuarijndorp" target="_blank" class="link-item social">
+                        <img src="medium_icon.png" alt="Medium Logo" class="link-icon">
+                        Medium
+                    </a>
+					<a href="https://github.com/NathanielRijndorp/" target="_blank" class="link-item social">
+                        <img src="github_icon.png" alt="Github Logo" class="link-icon">
+                        Github
+                    </a>
+                </div>
+            </div>
+            
+            <div class="link-group activity-links">
+                <h3>CTF Activity:</h3>
+                <div class="links-grid">
+                    <!-- Link 3: Hack The Box (Using Image, kept for specific logo but styled as a uniform link) -->
+                    <a href="https://app.hackthebox.com/users/2140509" target="_blank" class="link-item activity">
+                        <img src="htb logo.jpg" alt="Hack The Box Logo" class="link-icon"> Hack The Box Profile
+                    </a>
+                    <!-- Link 4: Cyber Defenders (Using Image) -->
+                    <a href="https://cyberdefenders.org/p/maomaofan#/challenges" target="_blank" class="link-item activity">
+                        <img src="cyber_defenders.png" alt="Cyber Defenders Logo" class="link-icon"> Cyber Defenders Profile
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+        <!-- END OF REDESIGNED LINK SECTION -->
     </section>
     
     
@@ -194,5 +330,6 @@
         <h2>Competitions</h2>
         <img src="hack4gov.jpg" alt="Competition: Hack4Gov">
     </section>
+
 </body>
 </html>
